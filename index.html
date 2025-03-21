@@ -116,6 +116,18 @@
       .error {
         color: red;
       }
+      /* Footer Styling */
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      color: rgb(0, 0, 0);
+      font-size: 14px;
+      padding: 10px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
 
       /* Responsive Design */
       @media (max-width: 480px) {
@@ -191,7 +203,10 @@
       <div id="message" class="message"></div>
     </div>
     
-
+<!-- Footer (Outside Container) -->
+<div class="footer">
+    &copy; Developed By Flt Cdt Abhinav
+  </div>
     <script>
       function submitForm() {
         var regimentalNo = document.getElementById("regimentalNo").value.trim();
