@@ -1,237 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NCC Cadet Registration</title>
-    <style>
-      /* General Page Styling */
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: url("./BG.jpg") no-repeat center center fixed; /* Replace with your image path */
-        background-size: cover;
-        margin: 0;
-        padding: 10px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NCC Cadet Registration</title>
 
-      /* Form Container with NCC Gradient Border */
-      .container {
-        background: white;
-        padding: 25px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        border-radius: 12px;
-        width: 100%;
-        max-width: 400px;
-        text-align: center;
-        position: relative;
-        border: 4px solid transparent; /* Needed for the border effect */
-        background-clip: padding-box; /* Ensures only the border has the gradient */
-      }
+  <!-- Select2 CSS for Searchable Dropdowns -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
-      /* NCC Colored Border */
-      .container::before {
-        content: "";
-        position: absolute;
-        top: -4px;
-        left: -4px;
-        right: -4px;
-        bottom: -4px;
-        border-radius: 12px;
-        background: linear-gradient(
-          135deg,
-          #d32f2f,
-          #283593,
-          #29b6f6
-        ); /* NCC Colors */
-        z-index: -1;
-      }
+  <style>
+    /* General Page Styling */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url("./BG.jpg") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 10px;
+    }
 
-      /* Logo Section */
-      .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px; /* Space between logos */
-        margin-bottom: 15px;
-      }
+    /* Form Container */
+    .container {
+      background: white;
+      padding: 25px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      border: 4px solid transparent;
+      background-clip: padding-box;
+    }
 
-      .logo-container img {
-        width: 80px; /* Set fixed size */
-        height: 80px; /* Equal width & height */
-        object-fit: contain; /* Ensure full visibility */
-      }
+    /* NCC Colored Border */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #d32f2f, #283593, #29b6f6);
+      z-index: -1;
+    }
 
-      /* Heading */
-      h2 {
-        color: #d21919;
-        margin-bottom: 15px;
-        font-size: 22px;
-      }
+    /* Logo Section */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px; /* Space between logos */
+      margin-bottom: 15px;
+    }
 
-      /* Form Elements */
-      input,
-      select,
-      button {
-        width: 100%;
-        padding: 12px;
-        margin-top: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 16px;
-      }
+    .logo-container img {
+      width: 80px; /* Fixed size */
+      height: 80px;
+      object-fit: contain;
+    }
 
-      select {
-        cursor: pointer;
-        background: white;
-      }
+    /* Labels */
+    label {
+      font-weight: bold;
+      display: block;
+      text-align: left;
+      margin-top: 12px;
+      color: #333;
+    }
 
-      /* Submit Button */
-      button {
-        background-color: #1976d2;
-        color: white;
-        border: none;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background 0.3s ease-in-out;
-      }
+    /* Select and Input Fields */
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      background: white;
+      transition: all 0.3s ease;
+    }
 
-      button:hover {
-        background-color: #1565c0;
-      }
+    select:focus {
+      border-color: #1976d2;
+      box-shadow: 0px 0px 5px rgba(25, 118, 210, 0.5);
+      outline: none;
+    }
 
-      /* Message Styling */
-      .message {
-        margin-top: 12px;
-        font-size: 14px;
-        font-weight: bold;
-      }
-      .success {
-        color: green;
-      }
-      .error {
-        color: red;
-      }
+    /* Submit Button */
+    button {
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+      margin-top: 15px;
+    }
 
-      /* Responsive Design */
-      @media (max-width: 480px) {
-        .container {
-          padding: 20px;
-          max-width: 90%;
-        }
-        h2 {
-          font-size: 20px;
-        }
-        input,
-        select,
-        button {
-          font-size: 14px;
-          padding: 10px;
-        }
-        .logo-container img {
-          width: 70px;
-          height: 70px;
-        }
-      }
+    button:hover {
+      background-color: #1565c0;
+    }
 
-      @media (max-width: 360px) {
-        h2 {
-          font-size: 18px;
-        }
-        button {
-          font-size: 14px;
-        }
-        .logo-container img {
-          width: 60px;
-          height: 60px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <!-- NCC & Unit Logos -->
-      <div class="logo-container">
-        <img src="./ncc-logo-png_seeklogo-440419.png" alt="NCC Logo" />
-        <!-- Replace with actual NCC logo path -->
-        <img src="./1das.jpg" alt="Unit Logo" />
-        <!-- Replace with actual unit logo path -->
-      </div>
+    /* Message Styling */
+    .message {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: bold;
+    }
 
-      <h2>1DAS ATTENDENCE PORTAL</h2>
-      <input
-        type="text"
-        id="regimentalNo"
-        placeholder="Regimental No"
-        required
-      />
-      <input type="text" id="rank" placeholder="Rank" required />
-      <input type="text" id="name" placeholder="Name" required />
+    .success { color: green; }
+    .error { color: red; }
 
-      <select id="year">
-        <option value="">Choose Year</option>
-        <option value="1st Year">1st Year</option>
-        <option value="2nd Year">2nd Year</option>
-        <option value="3rd Year">3rd Year</option>
-      </select>
+    /* Make Select2 Dropdowns Fit */
+    .select2-container {
+      width: 100% !important;
+    }
+  </style>
+</head>
+<body>
 
-      <select id="squadron">
-        <option value="">Choose Squadron</option>
-        <option value="Alpha">Alpha</option>
-        <option value="Bravo">Bravo</option>
-        <option value="Charlie">Charlie</option>
-        <option value="Delta">Delta</option>
-      </select>
-
-      <button onclick="submitForm()">Submit</button>
-      <div id="message" class="message"></div>
+  <div class="container">
+    <!-- NCC & Unit Logos -->
+    <div class="logo-container">
+      <img src="./ncc-logo-png_seeklogo-440419.png" alt="NCC Logo" />
+      <img src="./1das.jpg" alt="Unit Logo" />
     </div>
 
-    <script>
-      function submitForm() {
-        var regimentalNo = document.getElementById("regimentalNo").value.trim();
-        var rank = document.getElementById("rank").value.trim();
-        var name = document.getElementById("name").value.trim();
-        var year = document.getElementById("year").value;
-        var squadron = document.getElementById("squadron").value;
-        var messageDiv = document.getElementById("message");
+    <h2>1DAS ATTENDANCE PORTAL</h2>
 
-        // Clear previous messages
-        messageDiv.innerHTML = "";
+    <!-- Regimental No Dropdown -->
+    <label for="regimentalNo">Regimental No.</label>
+    <select id="regimentalNo">
+      <option value="">Choose Regimental No.</option>
+      <option value="12345">12345</option>
+      <option value="67890">67890</option>
+      <option value="11223">11223</option>
+      <option value="44556">44556</option>
+    </select>
 
-        if (!regimentalNo || !rank || !name || !year || !squadron) {
-          messageDiv.innerHTML =
-            "<span class='error'>⚠ Please fill all fields!</span>";
-          return;
-        }
+    <!-- Rank Dropdown -->
+    <label for="rank">Rank</label>
+    <select id="rank">
+      <option value="">Choose Rank</option>
+      <option value="Cadet">Cadet</option>
+      <option value="Lance Corporal">Lance Corporal</option>
+      <option value="Corporal">Corporal</option>
+      <option value="Sergeant">Sergeant</option>
+    </select>
 
-        fetch(
-          "https://script.google.com/macros/s/AKfycbyTxGngwL9iPOOXpaLyXIr9F2LjpYuFcziYN8lShEbtWTaffzW_m_jcrHY_hBbtV_DwuQ/exec",
-          {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ regimentalNo, rank, name, year, squadron }),
-          }
-        )
-          .then(() => {
-            messageDiv.innerHTML =
-              "<span class='success'>✔ Data Submitted Successfully!</span>";
-            document.getElementById("regimentalNo").value = "";
-            document.getElementById("rank").value = "";
-            document.getElementById("name").value = "";
-            document.getElementById("year").value = "";
-            document.getElementById("squadron").value = "";
-          })
-          .catch(() => {
-            messageDiv.innerHTML =
-              "<span class='error'>⚠ Error Submitting Data!</span>";
-          });
+    <!-- Name Dropdown -->
+    <label for="name">Name</label>
+    <select id="name">
+      <option value="">Choose Name</option>
+      <option value="Abhinav">Abhinav</option>
+      <option value="Rahul">Rahul</option>
+      <option value="Priya">Priya</option>
+      <option value="Anjali">Anjali</option>
+    </select>
+
+    <!-- Year Dropdown -->
+    <label for="year">Year</label>
+    <select id="year">
+      <option value="">Choose Year</option>
+      <option value="1st Year">1st Year</option>
+      <option value="2nd Year">2nd Year</option>
+      <option value="3rd Year">3rd Year</option>
+    </select>
+
+    <!-- Squadron Dropdown -->
+    <label for="squadron">Squadron</label>
+    <select id="squadron">
+      <option value="">Choose Squadron</option>
+      <option value="Alpha">Alpha</option>
+      <option value="Bravo">Bravo</option>
+      <option value="Charlie">Charlie</option>
+      <option value="Delta">Delta</option>
+    </select>
+
+    <button onclick="submitForm()">Submit</button>
+    <div id="message" class="message"></div>
+  </div>
+
+  <!-- jQuery and Select2 JS for Searchable Dropdowns -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+  <script>
+    // Initialize Select2 for searchable dropdowns
+    $(document).ready(function () {
+      $("#regimentalNo, #rank, #name").select2({
+        placeholder: "Search...",
+        allowClear: true,
+      });
+    });
+
+    function submitForm() {
+      var regimentalNo = document.getElementById("regimentalNo").value;
+      var rank = document.getElementById("rank").value;
+      var name = document.getElementById("name").value;
+      var year = document.getElementById("year").value;
+      var squadron = document.getElementById("squadron").value;
+      var messageDiv = document.getElementById("message");
+
+      messageDiv.innerHTML = "";
+
+      if (!regimentalNo || !rank || !name || !year || !squadron) {
+        messageDiv.innerHTML = "<span class='error'>⚠ Please fill all fields!</span>";
+        return;
       }
-    </script>
-  </body>
+
+      messageDiv.innerHTML = "<span class='success'>✔ Data Submitted Successfully!</span>";
+    }
+  </script>
+
+</body>
 </html>
