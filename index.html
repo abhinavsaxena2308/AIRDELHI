@@ -79,16 +79,16 @@
         border: 1px solid #ccc;
         border-radius: 6px;
         font-size: 16px;
-        box-sizing: border-box; /* Ensures padding does not affect width */
+        box-sizing: border-box; /* andar bahar ki gapping ke liye */
       }
 
       select {
-        appearance: none; /* Removes default dropdown styling */
+        appearance: none; /* purane tarike */
         background: white;
       }
 
       input {
-        appearance: none; /* Removes any default browser styling */
+        appearance: none; /* webpage ke default setup ko hatane ke liye */
       }
 
       button {
@@ -149,7 +149,7 @@
       <h2>VAYUSETU</h2>
       <div class="portal-name">1DAS ATTENDANCE PORTAL</div>
 
-      <!-- Searchable Regimental No -->
+      <!-- regimental number ki list -->
       <input
         list="regimentalNumbers"
         id="regimentalNo"
@@ -158,11 +158,11 @@
       />
       <datalist id="regimentalNumbers"></datalist>
 
-      <!-- Searchable Rank -->
+      <!-- Rank ki list -->
       <input list="ranks" id="rank" placeholder="Rank" required />
       <datalist id="ranks"></datalist>
 
-      <!-- Searchable Name -->
+      <!-- Name ki list -->
       <input list="names" id="name" placeholder="Name" required />
       <datalist id="names"></datalist>
 
@@ -187,13 +187,13 @@
     <div class="footer">&copy; Developed By Flt Cdt Abhinav</div>
 
     <script>
-      // Sample Data for Dropdowns
+      // search krke DL no. dundh sakte hai issey for both 2nd and 3rd year
       const regimentalNumbers = [];
       for (let i = 6542; i <= 6610; i++) {
         regimentalNumbers.push(`DL2023SDF00${i}`);
       }
 
-      // Add Extra Regimental Numbers Manually (Outside the Range)
+      // fas fas walo ke DL no.
       const extraRegimentalNumbers = [
         "DL2023SDF017405",
         "DL2023SDF017396",
@@ -216,9 +216,10 @@
         "DL2023SDF017390",
         "DL2022SDF633605",
       ];
-      regimentalNumbers.push(...extraRegimentalNumbers); // Merge lists
+      regimentalNumbers.push(...extraRegimentalNumbers); // open aur dbc walo ka collab krne hetu yeh kra gaya
 
       const ranks = ["FLT CDT", "CDT SGT", "CWO", "CUO", "CSUO"];
+      // naam ki list
       const names = [
         "VIVEK YADAV",
         "RAGHAV SHARMA",
@@ -303,7 +304,7 @@
 
       function populateDatalist(id, values) {
         const datalist = document.getElementById(id);
-        datalist.innerHTML = ""; // Clear previous options
+        datalist.innerHTML = ""; // purane options ko hatane ke liye
         values.forEach((value) => {
           const option = document.createElement("option");
           option.value = value;
@@ -311,7 +312,7 @@
         });
       }
 
-      // Populate datalists on page load
+      // page load hote hi data ko show krne ke liye
       populateDatalist("regimentalNumbers", regimentalNumbers);
       populateDatalist("ranks", ranks);
       populateDatalist("names", names);
@@ -324,7 +325,7 @@
         var squadron = document.getElementById("squadron").value;
         var messageDiv = document.getElementById("message");
 
-        messageDiv.innerHTML = ""; // Clear previous messages
+        messageDiv.innerHTML = ""; // Cyeh bas admin ke liye rakha hai, web page pr nahi dikhega
 
         if (!regimentalNo || !rank || !name || !year || !squadron) {
           messageDiv.innerHTML =
@@ -332,7 +333,7 @@
           return;
         }
 
-        // Show success message immediately
+        // yeppi ..... success ho gya ka msg dikhane ke liye
         messageDiv.innerHTML =
           "<span class='success'>✔ Data Submitted Successfully!</span>";
 
@@ -349,7 +350,7 @@
             "<span class='error'>⚠ Error Submitting Data!</span>";
         });
 
-        // Clear the form fields after submission
+        // form ek br submit ho jaane ke baad jo phele data filled tha usko hatane ke liye
         document.getElementById("regimentalNo").value = "";
         document.getElementById("rank").value = "";
         document.getElementById("name").value = "";
