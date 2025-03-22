@@ -194,13 +194,114 @@
       }
 
       // Add Extra Regimental Numbers Manually (Outside the Range)
-      const extraRegimentalNumbers = ["DL2023SDF017405","DL2023SDF017396","DL2023SDF017400","DL2023SDF017394","DL2023SDF017385","DL2023SDF017401","DL2023SDF017398","DL2023SDF017387","DL2023SDF017386","DL2023SDF017406","DL2023SDF017391","DL2023SDF017403","DL2023SDF017404","DL2023SDF017893","DL2023SDF017399","DL2023SDF017388","DL2023SDF017395","DL2023SDF017392","DL2023SDF017390","DL2022SDF633605"];
+      const extraRegimentalNumbers = [
+        "DL2023SDF017405",
+        "DL2023SDF017396",
+        "DL2023SDF017400",
+        "DL2023SDF017394",
+        "DL2023SDF017385",
+        "DL2023SDF017401",
+        "DL2023SDF017398",
+        "DL2023SDF017387",
+        "DL2023SDF017386",
+        "DL2023SDF017406",
+        "DL2023SDF017391",
+        "DL2023SDF017403",
+        "DL2023SDF017404",
+        "DL2023SDF017893",
+        "DL2023SDF017399",
+        "DL2023SDF017388",
+        "DL2023SDF017395",
+        "DL2023SDF017392",
+        "DL2023SDF017390",
+        "DL2022SDF633605",
+      ];
       regimentalNumbers.push(...extraRegimentalNumbers); // Merge lists
 
       const ranks = ["FLT CDT", "CDT SGT", "CWO", "CUO", "CSUO"];
-      const names = ["VIVEK YADAV", "RAGHAV SHARMA", "KRISHNA SANJAY BHELU", "NITISH KUMAR","SOMVIR", "PRITHVI RATHORE", "ANKIT LAMBA", "SUMIT", "RAUNAK KUMAR","ANANT KUMAR DIXIT", "ROCKY KUMAR JHA", "HARSH PHOGAT", "VIPUL DHANIA","AJAY KUMAR", "SUDHANSHU GHULE", "AYUSH THAKUR", "SUHAIL AHEMAD SAIFI","NITEESH", "YASHRAJ", "ABHINAV SAXENA", "MRADUL", "AYUSH KUMAR","ASHISH KUMAR", "ANSHU SINGH", "VISHAL", "PAWAN MEHTO", "PRIYANSHU JHA","JYOTIRADITYA KISHOR", "SAGAR", "ABHISHEK KUMAR", "ROHIT KUMAR","UTTKARSH SINGH", "ANKIT SINGH", "AAYUSH SHARMA", "HARSH PRASAD","ARYA KUMAR CHAUHAN", "RITHIK PANWAR", "NAVIN KUMAR BHARDWAJ","ARCHIT PANDEY", "DIWAKER", "AKASH KUMAR THAKUR", "MUKESH MANDAL","NIKHIL KUMAR", "NITIN", "MOHD ASHAR FAHEEM", "KISHAN KUMAR","MANAF FAROOQUI", "RAVI", "HARSH VARDHAN", "NIRBHAY TIWARI","MOHIT PRATAP SHARMA", "RAM SWAROOP", "HIMANSHU SHAKYA","PRIYANSHU NEGI", "VIKAS YADAV", "NITIN JANGRA", "GARV DOGRA","SANDEEP CHAUHAN", "PRIYANSHU KUMAR", "NITIN KUMAR JAKHAR", "SAURABH","ANUJ KUMAR", "VAIBHAV", "DEVVRAT KHATRI", "CHANDAN KUMAR", "AYUSH KUMAR","RAJEEV", "PRANAV", "KAUSHAL", "CHETAN", "KUSH KUMAR PANDEY","SOYAM CHOURASIA", "AVDHESH KUMAR PODDAR", "GAGAN BHARDWAJ","PIYUSH DUBEY", "SHIVAM OJHA", "RIPHIL KUMAR", "DEEPAK BAIRWA", "RAHUL"];
+      const names = [
+        "VIVEK YADAV",
+        "RAGHAV SHARMA",
+        "KRISHNA SANJAY BHELU",
+        "NITISH KUMAR",
+        "SOMVIR",
+        "PRITHVI RATHORE",
+        "ANKIT LAMBA",
+        "SUMIT",
+        "RAUNAK KUMAR",
+        "ANANT KUMAR DIXIT",
+        "ROCKY KUMAR JHA",
+        "HARSH PHOGAT",
+        "VIPUL DHANIA",
+        "AJAY KUMAR",
+        "SUDHANSHU GHULE",
+        "AYUSH THAKUR",
+        "SUHAIL AHEMAD SAIFI",
+        "NITEESH",
+        "YASHRAJ",
+        "ABHINAV SAXENA",
+        "MRADUL",
+        "AYUSH KUMAR",
+        "ASHISH KUMAR",
+        "ANSHU SINGH",
+        "VISHAL",
+        "PAWAN MEHTO",
+        "PRIYANSHU JHA",
+        "JYOTIRADITYA KISHOR",
+        "SAGAR",
+        "ABHISHEK KUMAR",
+        "ROHIT KUMAR",
+        "UTTKARSH SINGH",
+        "ANKIT SINGH",
+        "AAYUSH SHARMA",
+        "HARSH PRASAD",
+        "ARYA KUMAR CHAUHAN",
+        "RITHIK PANWAR",
+        "NAVIN KUMAR BHARDWAJ",
+        "ARCHIT PANDEY",
+        "DIWAKER",
+        "AKASH KUMAR THAKUR",
+        "MUKESH MANDAL",
+        "NIKHIL KUMAR",
+        "NITIN",
+        "MOHD ASHAR FAHEEM",
+        "KISHAN KUMAR",
+        "MANAF FAROOQUI",
+        "RAVI",
+        "HARSH VARDHAN",
+        "NIRBHAY TIWARI",
+        "MOHIT PRATAP SHARMA",
+        "RAM SWAROOP",
+        "HIMANSHU SHAKYA",
+        "PRIYANSHU NEGI",
+        "VIKAS YADAV",
+        "NITIN JANGRA",
+        "GARV DOGRA",
+        "SANDEEP CHAUHAN",
+        "PRIYANSHU KUMAR",
+        "NITIN KUMAR JAKHAR",
+        "SAURABH",
+        "ANUJ KUMAR",
+        "VAIBHAV",
+        "DEVVRAT KHATRI",
+        "CHANDAN KUMAR",
+        "AYUSH KUMAR",
+        "RAJEEV",
+        "PRANAV",
+        "KAUSHAL",
+        "CHETAN",
+        "KUSH KUMAR PANDEY",
+        "SOYAM CHOURASIA",
+        "AVDHESH KUMAR PODDAR",
+        "GAGAN BHARDWAJ",
+        "PIYUSH DUBEY",
+        "SHIVAM OJHA",
+        "RIPHIL KUMAR",
+        "DEEPAK BAIRWA",
+        "RAHUL",
+      ];
 
-        function populateDatalist(id, values) {
+      function populateDatalist(id, values) {
         const datalist = document.getElementById(id);
         datalist.innerHTML = ""; // Clear previous options
         values.forEach((value) => {
@@ -223,13 +324,17 @@
         var squadron = document.getElementById("squadron").value;
         var messageDiv = document.getElementById("message");
 
-        messageDiv.innerHTML = "";
+        messageDiv.innerHTML = ""; // Clear previous messages
 
         if (!regimentalNo || !rank || !name || !year || !squadron) {
           messageDiv.innerHTML =
             "<span class='error'>⚠ Please fill all fields!</span>";
           return;
         }
+
+        // Show success message immediately
+        messageDiv.innerHTML =
+          "<span class='success'>✔ Data Submitted Successfully!</span>";
 
         fetch(
           "https://script.google.com/macros/s/AKfycbwUnkL2KUzCiR0T4EhVfVolURhYKsBFGEPraGFyLe7Q8HFdHYlQyWNGPjzWWZWU0bxtmQ/exec",
@@ -239,15 +344,17 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ regimentalNo, rank, name, year, squadron }),
           }
-        )
-          .then(() => {
-            messageDiv.innerHTML =
-              "<span class='success'>✔ Data Submitted Successfully!</span>";
-          })
-          .catch(() => {
-            messageDiv.innerHTML =
-              "<span class='error'>⚠ Error Submitting Data!</span>";
-          });
+        ).catch(() => {
+          messageDiv.innerHTML =
+            "<span class='error'>⚠ Error Submitting Data!</span>";
+        });
+
+        // Clear the form fields after submission
+        document.getElementById("regimentalNo").value = "";
+        document.getElementById("rank").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("year").value = "";
+        document.getElementById("squadron").value = "";
       }
     </script>
   </body>
