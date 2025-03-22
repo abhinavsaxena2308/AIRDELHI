@@ -79,16 +79,16 @@
         border: 1px solid #ccc;
         border-radius: 6px;
         font-size: 16px;
-        box-sizing: border-box; /* andar bahar ki gapping ke liye */
+        box-sizing: border-box; /* Ensures padding does not affect width */
       }
 
       select {
-        appearance: none; /* purane tarike */
+        appearance: none; /* Removes default dropdown styling */
         background: white;
       }
 
       input {
-        appearance: none; /* webpage ke default setup ko hatane ke liye */
+        appearance: none; /* Removes any default browser styling */
       }
 
       button {
@@ -149,7 +149,7 @@
       <h2>VAYUSETU</h2>
       <div class="portal-name">1DAS ATTENDANCE PORTAL</div>
 
-      <!-- regimental number ki list -->
+      <!-- Searchable Regimental No -->
       <input
         list="regimentalNumbers"
         id="regimentalNo"
@@ -158,11 +158,11 @@
       />
       <datalist id="regimentalNumbers"></datalist>
 
-      <!-- Rank ki list -->
+      <!-- Searchable Rank -->
       <input list="ranks" id="rank" placeholder="Rank" required />
       <datalist id="ranks"></datalist>
 
-      <!-- Name ki list -->
+      <!-- Searchable Name -->
       <input list="names" id="name" placeholder="Name" required />
       <datalist id="names"></datalist>
 
@@ -187,124 +187,85 @@
     <div class="footer">&copy; Developed By Flt Cdt Abhinav</div>
 
     <script>
-      // search krke DL no. dundh sakte hai issey for both 2nd and 3rd year
+      // Sample Data for Dropdowns
       const regimentalNumbers = [];
       for (let i = 6542; i <= 6610; i++) {
         regimentalNumbers.push(`DL2023SDF00${i}`);
       }
 
-      // fas fas walo ke DL no.
+      // Add Extra Regimental Numbers Manually (Outside the Range)
       const extraRegimentalNumbers = [
-        "DL2023SDF017405",
-        "DL2023SDF017396",
-        "DL2023SDF017400",
-        "DL2023SDF017394",
-        "DL2023SDF017385",
-        "DL2023SDF017401",
-        "DL2023SDF017398",
-        "DL2023SDF017387",
-        "DL2023SDF017386",
-        "DL2023SDF017406",
-        "DL2023SDF017391",
-        "DL2023SDF017403",
-        "DL2023SDF017404",
-        "DL2023SDF017893",
-        "DL2023SDF017399",
-        "DL2023SDF017388",
-        "DL2023SDF017395",
-        "DL2023SDF017392",
-        "DL2023SDF017390",
-        "DL2022SDF633605",
-      ];
-      regimentalNumbers.push(...extraRegimentalNumbers); // open aur dbc walo ka collab krne hetu yeh kra gaya
+        "DL2023SDF017405", "DL2023SDF017396", "DL2023SDF017400", "DL2023SDF017394", 
+        "DL2023SDF017385", "DL2023SDF017401", "DL2023SDF017398", "DL2023SDF017387", 
+        "DL2023SDF017386", "DL2023SDF017406", "DL2023SDF017391", "DL2023SDF017403", 
+        "DL2023SDF017404", "DL2023SDF017893", "DL2023SDF017399", "DL2023SDF017388", 
+        "DL2023SDF017395", "DL2023SDF017392", "DL2023SDF017390", "DL2022SDF633605", 
+        "DL2024SDAF1280964", "DL2024SDAF1280642", "DL2024SDAF1280643", "DL2024SDAF1280644", 
+        "DL2024SDAF1280645", "DL2024SDAF1280646", "DL2024SDAF1280647", "DL2024SDAF1280648", 
+        "DL2024SDAF1280649", "DL2024SDAF1280650", "DL2024SDAF1280651", "DL2024SDAF1280960", 
+        "DL2024SDAF1280961", "DL2024SDAF1280962", "DL2024SDAF1280963", "DL2024SDAF1280965", 
+        "DL2024SDAF1280966", "DL2024SDAF1280967", "DL2024SDAF1280968", "DL2024SDAF1280969", 
+        "DL2024SDAF1280970", "DL2024SDAF1280971", "DL2024SDAF1280972", "DL2024SDAF1280973", 
+        "DL2024SDAF1280974", "DL2024SDAF1280975", "DL2024SDAF1280979",
+        "DL2024SDAF1280590", "DL2024SDAF1280591", "DL2024SDAF1280592", "DL2024SDAF1280593",
+        "DL2024SDAF1280594", "DL2024SDAF1280595", "DL2024SDAF1280596", "DL2024SDAF1280597",
+        "DL2024SDAF1280598", "DL2024SDAF1280599", "DL2024SDAF1280600", "DL2024SDAF1280601",
+        "DL2024SDAF1280602", "DL2024SDAF1280603", "DL2024SDAF1280604", "DL2024SDAF1280605",
+        "DL2024SDAF1280606", "DL2024SDAF1280607", "DL2024SDAF1280608", "DL2024SDAF1280609",
+        "DL2024SDAF1280610", "DL2024SDAF1280611", "DL2024SDAF1280612", "DL2024SDAF1280613",
+        "DL2024SDAF1280615", "DL2024SDAF1280616", "DL2024SDAF1280617", "DL2024SDAF1280618",
+        "DL2024SDAF1280619", "DL2024SDAF1280620", "DL2024SDAF1280621", "DL2024SDAF1280622",
+        "DL2024SDAF1280623", "DL2024SDAF1280624", "DL2024SDAF1280625", "DL2024SDAF1280626",
+        "DL2024SDAF1280627", "DL2024SDAF1280629", "DL2024SDAF1280631", "DL2024SDAF1280632",
+        "DL2024SDAF1280633", "DL2024SDAF1280634", "DL2024SDAF1280635", "DL2024SDAF1280636",
+        "DL2024SDAF1280637", "DL2024SDAF1280638", "DL2024SDAF1280639", "DL2024SDAF1280640",
+        "DL2024SDAF1280641", "DL2024SDAF1280643"
+];
+
+
+      regimentalNumbers.push(...extraRegimentalNumbers); // Merge lists
 
       const ranks = ["FLT CDT", "CDT SGT", "CWO", "CUO", "CSUO"];
-      // naam ki list
       const names = [
-        "VIVEK YADAV",
-        "RAGHAV SHARMA",
-        "KRISHNA SANJAY BHELU",
-        "NITISH KUMAR",
-        "SOMVIR",
-        "PRITHVI RATHORE",
-        "ANKIT LAMBA",
-        "SUMIT",
-        "RAUNAK KUMAR",
-        "ANANT KUMAR DIXIT",
-        "ROCKY KUMAR JHA",
-        "HARSH PHOGAT",
-        "VIPUL DHANIA",
-        "AJAY KUMAR",
-        "SUDHANSHU GHULE",
-        "AYUSH THAKUR",
-        "SUHAIL AHEMAD SAIFI",
-        "NITEESH",
-        "YASHRAJ",
-        "ABHINAV SAXENA",
-        "MRADUL",
-        "AYUSH KUMAR",
-        "ASHISH KUMAR",
-        "ANSHU SINGH",
-        "VISHAL",
-        "PAWAN MEHTO",
-        "PRIYANSHU JHA",
-        "JYOTIRADITYA KISHOR",
-        "SAGAR",
-        "ABHISHEK KUMAR",
-        "ROHIT KUMAR",
-        "UTTKARSH SINGH",
-        "ANKIT SINGH",
-        "AAYUSH SHARMA",
-        "HARSH PRASAD",
-        "ARYA KUMAR CHAUHAN",
-        "RITHIK PANWAR",
-        "NAVIN KUMAR BHARDWAJ",
-        "ARCHIT PANDEY",
-        "DIWAKER",
-        "AKASH KUMAR THAKUR",
-        "MUKESH MANDAL",
-        "NIKHIL KUMAR",
-        "NITIN",
-        "MOHD ASHAR FAHEEM",
-        "KISHAN KUMAR",
-        "MANAF FAROOQUI",
-        "RAVI",
-        "HARSH VARDHAN",
-        "NIRBHAY TIWARI",
-        "MOHIT PRATAP SHARMA",
-        "RAM SWAROOP",
-        "HIMANSHU SHAKYA",
-        "PRIYANSHU NEGI",
-        "VIKAS YADAV",
-        "NITIN JANGRA",
-        "GARV DOGRA",
-        "SANDEEP CHAUHAN",
-        "PRIYANSHU KUMAR",
-        "NITIN KUMAR JAKHAR",
-        "SAURABH",
-        "ANUJ KUMAR",
-        "VAIBHAV",
-        "DEVVRAT KHATRI",
-        "CHANDAN KUMAR",
-        "AYUSH KUMAR",
-        "RAJEEV",
-        "PRANAV",
-        "KAUSHAL",
-        "CHETAN",
-        "KUSH KUMAR PANDEY",
-        "SOYAM CHOURASIA",
-        "AVDHESH KUMAR PODDAR",
-        "GAGAN BHARDWAJ",
-        "PIYUSH DUBEY",
-        "SHIVAM OJHA",
-        "RIPHIL KUMAR",
-        "DEEPAK BAIRWA",
-        "RAHUL",
+        "VIVEK YADAV", "RAGHAV SHARMA", "KRISHNA SANJAY BHELU", "NITISH KUMAR", "SOMVIR", 
+        "PRITHVI RATHORE", "ANKIT LAMBA", "SUMIT", "RAUNAK KUMAR", "ANANT KUMAR DIXIT", 
+        "ROCKY KUMAR JHA", "HARSH PHOGAT", "VIPUL DHANIA", "AJAY KUMAR", "SUDHANSHU GHULE", 
+        "AYUSH THAKUR", "SUHAIL AHEMAD SAIFI", "NITEESH", "YASHRAJ", "ABHINAV SAXENA", 
+        "MRADUL", "AYUSH KUMAR", "ASHISH KUMAR", "ANSHU SINGH", "VISHAL", "PAWAN MEHTO", 
+        "PRIYANSHU JHA", "JYOTIRADITYA KISHOR", "SAGAR", "ABHISHEK KUMAR", "ROHIT KUMAR", 
+        "UTTKARSH SINGH", "ANKIT SINGH", "AAYUSH SHARMA", "HARSH PRASAD", "ARYA KUMAR CHAUHAN", 
+        "RITHIK PANWAR", "NAVIN KUMAR BHARDWAJ", "ARCHIT PANDEY", "DIWAKER", "AKASH KUMAR THAKUR", 
+        "MUKESH MANDAL", "NIKHIL KUMAR", "NITIN", "MOHD ASHAR FAHEEM", "KISHAN KUMAR", 
+        "MANAF FAROOQUI", "RAVI", "HARSH VARDHAN", "NIRBHAY TIWARI", "MOHIT PRATAP SHARMA", 
+        "RAM SWAROOP", "HIMANSHU SHAKYA", "PRIYANSHU NEGI", "VIKAS YADAV", "NITIN JANGRA", 
+        "GARV DOGRA", "SANDEEP CHAUHAN", "PRIYANSHU KUMAR", "NITIN KUMAR JAKHAR", "SAURABH", 
+        "ANUJ KUMAR", "VAIBHAV", "DEVVRAT KHATRI", "CHANDAN KUMAR", "AYUSH KUMAR", "RAJEEV", 
+        "PRANAV", "KAUSHAL", "CHETAN", "KUSH KUMAR PANDEY", "SOYAM CHOURASIA", "AVDHESH KUMAR PODDAR", 
+        "GAGAN BHARDWAJ", "PIYUSH DUBEY", "SHIVAM OJHA", "RIPHIL KUMAR", "DEEPAK BAIRWA", "RAHUL", 
+        "SHAH FAISAL BASHIR", "NEERAJ KUMAR", "SAHIL SHARMA", "ATUL SINGH", "MANAS KUMAR JHA", 
+        "ANUJ SHAKYA", "VIKRAM SINGH RATHORE", "SANDEEP KUMAR YADAV", "SHREYASKOR BORGOHAIN", 
+        "VIKAS KUMAR GUPTA", "BIMAL GORAI", "ABHINAV RAJ SINGH", "VAIBHAV KUMAR VERMA", 
+        "PRASHANT KUMAR CHAUBEY", "SIDDHARTH PANDEY", "RAHUL SINGH CHAUHAN", "HIMANSHU SHARMA", 
+        "SHIV NARAYAN SAHNI", "SANDEEP KUMAR", "ROHIT PANDEY", "JATIN YADAV", "SUBHAJIT DAS", 
+        "MD NASRULLAH ANSARI", "SANDEEP YADAV", "GOPAL KRISHNA", "SIMARJEET SINGH", 
+        "MILAN SINGH", "PIYUSH PARMAR", "SAURABH YADAV", "KARTIK SAINI", "RISHABH RAJA", 
+        "AMRINDER SINGH GREWAL", "ANIKET RAJ", "KARTIKAY SINGH JAGIRDAR", "ANUJ YADAV", 
+        "ANUBHAV KUMAR SINGH", "ABHINANDAN KUMAR SINGH", "SHUBHAM SHARMA", "RAHUL CHAURSIA", 
+        "ADITYA SIROHI", "SAMEER CHAUHAN", "PREM BHARDWAJ", "RAVADA PAWAN KUMAR", 
+        "ABHISHEK MISHRA", "HARSHVARDHAN CHHETRI", "AALOK KUMAR", "RAHUL SINGH DUSAD", 
+        "VISHU NAMDEV", "MADHUSUDAN SINGH LEGHA", "HARE KRISHNA NAIK", "SHIVAM TIWARI", 
+        "PRIYANSHU THAKUR", "SAMARTH RANGAR", "PRASHANT AWASTHI", "RISHABH NEGI", 
+        "PRATYUSH BHALLA", "TANISHK VERMA", "NITIN SHARMA", "DEEPU KUMAR", "ARPIT SINGH", 
+        "SATYAM KUMAR", "SUJEET KUMAR YADAV", "PAWAN KUMAR SAH", "ARYAN SHARMA", 
+        "HARSH RAJ SINGH", "VIVEK THAKUR", "RUDRAKSH SINGH", "ADITYA SINGH RATHORE", 
+        "VANSH GUPTA", "GOPAL TIWARI", "SANKALP CHOUDHARY", "JOYSURIYA BHATTACHARJEE", 
+        "ARYAN SINGH", "ANANG SHASHWAT TARUN", "GARVIT SHARMA", "SAHIL MEHTA"
       ];
+
 
       function populateDatalist(id, values) {
         const datalist = document.getElementById(id);
-        datalist.innerHTML = ""; // purane options ko hatane ke liye
+        datalist.innerHTML = ""; // Clear previous options
         values.forEach((value) => {
           const option = document.createElement("option");
           option.value = value;
@@ -312,7 +273,7 @@
         });
       }
 
-      // page load hote hi data ko show krne ke liye
+      // Populate datalists on page load
       populateDatalist("regimentalNumbers", regimentalNumbers);
       populateDatalist("ranks", ranks);
       populateDatalist("names", names);
@@ -325,7 +286,7 @@
         var squadron = document.getElementById("squadron").value;
         var messageDiv = document.getElementById("message");
 
-        messageDiv.innerHTML = ""; // Cyeh bas admin ke liye rakha hai, web page pr nahi dikhega
+        messageDiv.innerHTML = ""; // Clear previous messages
 
         if (!regimentalNo || !rank || !name || !year || !squadron) {
           messageDiv.innerHTML =
@@ -333,12 +294,12 @@
           return;
         }
 
-        // yeppi ..... success ho gya ka msg dikhane ke liye
+        // Show success message immediately
         messageDiv.innerHTML =
           "<span class='success'>✔ Data Submitted Successfully!</span>";
 
         fetch(
-          "https://script.google.com/macros/s/AKfycbwUnkL2KUzCiR0T4EhVfVolURhYKsBFGEPraGFyLe7Q8HFdHYlQyWNGPjzWWZWU0bxtmQ/exec",
+          "https://script.google.com/macros/s/AKfycbzBbbpY6J2G-kZJ2kGTDKQWbtvEcRRBIUa9XVQ_cvVQVyUs6_v4tzuaK1YloBl7qSbxKw/exec",
           {
             method: "POST",
             mode: "no-cors",
@@ -350,7 +311,7 @@
             "<span class='error'>⚠ Error Submitting Data!</span>";
         });
 
-        // form ek br submit ho jaane ke baad jo phele data filled tha usko hatane ke liye
+        // Clear the form fields after submission
         document.getElementById("regimentalNo").value = "";
         document.getElementById("rank").value = "";
         document.getElementById("name").value = "";
